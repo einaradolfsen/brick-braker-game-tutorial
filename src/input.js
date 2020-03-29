@@ -14,6 +14,8 @@ export class InputHandler {
     });
 
     document.addEventListener("keyup", function(event) {
+      if (paddle.speed <= 0) return;
+
       switch (event.keyCode) {
         case 37:
         case 39:

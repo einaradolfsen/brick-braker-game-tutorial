@@ -19,8 +19,6 @@ export class Paddle {
   }
 
   udate(deltaTime) {
-    if (!deltaTime) return;
-    //this.position.x += 5 / deltaTime;
     this.position.x += this.speed / deltaTime;
     if (this.position.x < 0) this.position.x = 0;
     if (this.position.x > this.gameWidth - this.width)
