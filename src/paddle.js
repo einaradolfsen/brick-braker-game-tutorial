@@ -1,12 +1,12 @@
 export class Paddle {
-  constructor(gameWidth, gameHeight) {
+  constructor(game) {
     this.width = 150;
     this.height = 20;
-    this.gameWidth = gameWidth;
+    this.gameWidth = game.gameWidth;
 
     this.position = {
-      x: gameWidth / 2 - this.width / 2,
-      y: gameHeight - this.height - 10
+      x: game.gameWidth / 2 - this.width / 2,
+      y: game.gameHeight - this.height - 10
     };
 
     this.maxSpeed = 10;
@@ -18,7 +18,7 @@ export class Paddle {
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
-  udate(deltaTime) {
+  update(deltaTime) {
     this.position.x += this.speed / deltaTime;
     if (this.position.x < 0) this.position.x = 0;
     if (this.position.x > this.gameWidth - this.width)
