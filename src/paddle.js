@@ -9,7 +9,7 @@ export class Paddle {
       y: game.gameHeight - this.height - 10
     };
 
-    this.maxSpeed = 10;
+    this.maxSpeed = 1;
     this.speed = 0;
   }
 
@@ -19,7 +19,7 @@ export class Paddle {
   }
 
   update(deltaTime) {
-    this.position.x += this.speed;
+    this.position.x += this.speed * deltaTime;
     if (this.position.x < 0) this.position.x = 0;
     if (this.position.x > this.gameWidth - this.width)
       this.position.x = this.gameWidth - this.width;
