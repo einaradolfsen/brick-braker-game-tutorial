@@ -12,7 +12,6 @@ canvas.width = GAME_WIDTH;
 canvas.height = GAME_HEIGHT;
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start();
 
 document.getElementById("the-body").appendChild(canvas);
 let ctx = canvas.getContext("2d");
