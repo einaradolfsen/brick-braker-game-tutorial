@@ -15,20 +15,23 @@ export default class Game {
   constructor(gameWidth, gameHeight) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
+    this.gameState = GAMESTATE.MENU;
+    this.paddle = new Paddle(this);
+    this.ball = new Ball(this);
+    this.gameObjects = [];
+    new InputHandler(this.paddle, this);
+
   }
 
   start() {
-    this.gameState = GAMESTATE.RUNNING;
-    this.paddle = new Paddle(this);
-    this.ball = new Ball(this);
+    if(this.gameState !== GAMESTATE.MENU) return;
     this.bricks = buildLevel(this, level1);
-
     this.gameObjects = [this.paddle, this.ball, ...this.bricks];
-    new InputHandler(this.paddle, this);
+    this.gameState = GAMESTATE.RUNNING;
   }
 
   update(deltaTime) {
-    if(this.gameState === GAMESTATE.PAUSED) return;
+    if(this.gameState === GAMESTATE.PAUSED || this.gameState === GAMESTATE.MENU) return;
     this.gameObjects.forEach(go => go.update(deltaTime));
     this.gameObjects = this.gameObjects.filter(go => !go.markedForDeletion);
   }
@@ -46,6 +49,17 @@ export default class Game {
       ctx.textAlign = "center";
       ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight/2);
       
+    }
+
+    if(this.gameState === GAMESTATE.MENU){
+      ctx.rect(0,0,this.gameWidth, this.gameHeight);
+      ctx.fillStyle = "rgba(0,0,0,1)";
+      ctx.fill();
+
+      ctx.font ="30px Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText("Press SPACEBAR To Start", this.gameWidth / 2, this.gameHeight/2);
     }
   }
 

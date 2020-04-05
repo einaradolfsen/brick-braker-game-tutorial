@@ -14,6 +14,10 @@ export class InputHandler {
         case 27: //escape key
           game.togglePause();
           break;
+
+        case 32: //spacebar
+          game.start();
+          break;
       }
     });
 
