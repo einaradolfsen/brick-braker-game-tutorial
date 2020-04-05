@@ -4,7 +4,7 @@ export default class Ball {
     this.gameWidth = game.gameWidth;
     this.image = document.getElementById("img-ball");
     this.game = game;
-    this.speed = { x: 2, y: 2 };
+    this.speed = { x: .25, y: 0.25 };
     this.position = {
       x: 10,
       y: 10
@@ -23,8 +23,8 @@ export default class Ball {
   }
 
   update(deltaTime) {
-    this.position.x += this.speed.x;
-    this.position.y += this.speed.y;
+    this.position.x += this.speed.x * deltaTime;
+    this.position.y += this.speed.y * deltaTime;
 
     if (
       this.position.x + this.size >= this.game.gameWidth ||
