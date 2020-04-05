@@ -1,14 +1,18 @@
 let that;
 export class InputHandler {
-  constructor(paddle) {
+  constructor(paddle, game) {
     document.addEventListener("keydown", function(event) {
       switch (event.keyCode) {
-        case 37:
+        case 37: //left arrow key
           paddle.moveLeft();
           break;
 
-        case 39:
+        case 39: //right arrow key
           paddle.moveRight();
+          break;
+
+        case 27: //escape key
+          game.togglePause();
           break;
       }
     });
