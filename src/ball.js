@@ -6,10 +6,10 @@ export default class Ball {
     this.gameWidth = game.gameWidth;
     this.image = document.getElementById("img-ball");
     this.game = game;
-    this.speed = { x: .25, y: 0.25 };
+    this.speed = { x: .25, y: -0.25 };
     this.position = {
       x: 10,
-      y: 10
+      y: 400
     };
     this.size = 16;
   }
