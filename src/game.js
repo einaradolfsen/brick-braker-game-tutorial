@@ -21,6 +21,7 @@ export default class Game {
 
   update(deltaTime) {
     this.gameObjects.forEach(go => go.update(deltaTime));
+    this.gameObjects = this.gameObjects.filter(go => !go.markedForDeletion);
   }
 
   draw(ctx) {
