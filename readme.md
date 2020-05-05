@@ -10,9 +10,10 @@
 
 #####start project ii)
 install live server extension
-
+When starting live server, index.html must be selected in file explorer
 1. click go live
 2. make changes
+
 
 ## visual studio code extensions:
 
